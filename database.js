@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const epilogue = require('epilogue');
+const finale = require('finale-rest');
 
 const database = new Sequelize({
     dialect: 'sqlite',
@@ -7,19 +7,36 @@ const database = new Sequelize({
 });
 
 const User = database.define('users', {
-    id: {type: Sequelize.INTEGER, primaryKey: true},
-    tag: Sequelize.STRING,
-    mc: Sequelize.STRING,
-    uuid: Sequelize.UUIDV4
+    tag: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    userid: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true
+    },
+    mc: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    uuid: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        unique: true,
+        validate: {
+            isUUID: 4
+        }
+    }
 });
 
 const initializeDatabase = async (app) => {
-    epilogue.initialize({app, sequelize: database, updateMethod: 'PATCH'});
+    finale.initialize({ app, sequelize: database, updateMethod: 'PATCH' });
 
-    epilogue.resource({
+    finale.resource({
         model: User,
         endpoints: ['/users', '/users/:id']
-    })
+    });
 
     await database.sync();
 };
