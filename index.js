@@ -1,13 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const { promisify } = require('util');
+
+const initializeDatabase = require('./database');
+
 const app = express();
-const fs = require('fs');
-
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-const routes = require('./routes/routes.js')(app, fs);
+const startServer = async () => {
+    await initializeDatabase(app);
 
-const server = app.listen(3001, () => {
-    console.log('listening on port %s...', server.address().port);
-});
+    const port = process.env.SERVER_PORT || 3000;
+    await promisify(app.listen).bind(app)(port);
+    console.log(`Listening on port ${port}`);
+};
+startServer();
