@@ -1,10 +1,10 @@
 {
   "name": "resiapi",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node ."
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,13 @@
     "sequelize": "^6.4.0",
     "sqlite3": "^5.0.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "standardx": "^7.0.0"
+  },
+  "eslintConfig": {
+    "rules": {
+      "semi": [1, "always"],
+      "indent": [1, 4]
+    }
+  }
 }

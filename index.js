@@ -14,7 +14,6 @@ app.use(basicAuth({ users, challenge: true }));
 
 const startServer = async () => {
     await initializeDatabase(app);
-
     const port = process.env.SERVER_PORT || defaultPort;
     await promisify(app.listen).bind(app)(port);
     console.log(`Listening on port ${port}`);
