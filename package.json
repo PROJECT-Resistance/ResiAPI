@@ -20,7 +20,5 @@
     "sequelize": "^6.4.0",
     "sqlite3": "^5.0.1"
   },
-  "devDependencies": {
-    "standard": "^16.0.3"
-  }
+  "devDependencies": {}
 }
