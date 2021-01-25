@@ -1,6 +1,6 @@
 {
   "name": "resi-api",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,11 +22,5 @@
   },
   "devDependencies": {
     "standardx": "^7.0.0"
-  },
-  "eslintConfig": {
-    "rules": {
-      "semi": [1, "always"],
-      "indent": [1, 4]
-    }
   }
 }
