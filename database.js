@@ -14,7 +14,11 @@ const User = database.define('users', {
     userid: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
+        validate: {
+            isNumeric: true,
+            isInt: false
+        }
     },
     mc: {
         type: Sequelize.STRING,
